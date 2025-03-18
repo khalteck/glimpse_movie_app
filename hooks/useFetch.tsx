@@ -5,7 +5,7 @@ interface FetchResult {
 }
 
 interface IProps {
-  fetchFunction: () => Promise<FetchResult>;
+  fetchFunction: () => Promise<any>;
   autoFetch?: boolean;
 }
 
@@ -13,10 +13,10 @@ const useFetch = ({
   fetchFunction,
   autoFetch = true,
 }: IProps): {
-  data: any[] | null;
+  data: any[] | any | null;
   loading: boolean;
   error: Error | null;
-  fetchData: () => Promise<void>;
+  reFetch: () => Promise<any[] | undefined>;
   reset: () => void;
 } => {
   const [data, setData] = useState<any | null>(null);
@@ -30,7 +30,8 @@ const useFetch = ({
 
       const response = await fetchFunction();
 
-      setData(response?.results || []);
+      setData(response?.results || response || []);
+      return response?.results || response || [];
     } catch (error) {
       setError(
         error instanceof Error ? error : new Error("An error occurred!")
@@ -52,7 +53,7 @@ const useFetch = ({
     }
   }, []);
 
-  return { data, loading, error, fetchData: fetchData, reset };
+  return { data, loading, error, reFetch: fetchData, reset };
 };
 
 export default useFetch;

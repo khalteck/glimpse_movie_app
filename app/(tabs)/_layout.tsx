@@ -34,7 +34,11 @@ const _layout = () => {
           title: "Home",
           headerShown: false,
           tabBarIcon: ({ focused }) => {
-            return <TabIcon focused={focused} icon={icons.home} title="Home" />;
+            return (
+              <View className="w-full flex items-center justify-center">
+                <TabIcon focused={focused} icon={icons.home} title="Home" />
+              </View>
+            );
           },
         }}
       />
@@ -45,7 +49,9 @@ const _layout = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => {
             return (
-              <TabIcon focused={focused} icon={icons.search} title="Search" />
+              <View className="w-full flex items-center justify-center">
+                <TabIcon focused={focused} icon={icons.search} title="Search" />
+              </View>
             );
           },
         }}
@@ -57,7 +63,9 @@ const _layout = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => {
             return (
-              <TabIcon focused={focused} icon={icons.save} title="Saved" />
+              <View className="w-full flex items-center justify-center">
+                <TabIcon focused={focused} icon={icons.save} title="Saved" />
+              </View>
             );
           },
         }}
@@ -69,7 +77,13 @@ const _layout = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => {
             return (
-              <TabIcon focused={focused} icon={icons.person} title="Profile" />
+              <View className="w-full flex items-center justify-center">
+                <TabIcon
+                  focused={focused}
+                  icon={icons.person}
+                  title="Profile"
+                />
+              </View>
             );
           },
         }}

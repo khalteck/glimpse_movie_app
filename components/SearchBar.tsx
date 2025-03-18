@@ -5,11 +5,24 @@ import { icons } from "@/constants/icons";
 interface IProps {
   onPress?: () => void;
   placeHolder: string;
+  value?: string;
+  onChangeText?: (text: string) => void;
+  className?: string;
+  autoFocus?: boolean;
 }
 
-const SearchBar = ({ onPress, placeHolder }: IProps) => {
+const SearchBar = ({
+  onPress,
+  placeHolder,
+  value,
+  onChangeText,
+  className,
+  autoFocus,
+}: IProps) => {
   return (
-    <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-4">
+    <View
+      className={`flex-row items-center bg-dark-200 rounded-full px-5 py-4 ${className}`}
+    >
       <Image
         source={icons.search}
         className="size-5"
@@ -19,10 +32,11 @@ const SearchBar = ({ onPress, placeHolder }: IProps) => {
       <TextInput
         placeholder={placeHolder}
         placeholderTextColor="#ab8ff"
-        className="text-secondary text-base font-semibold ml-3"
+        className="w-full text-white font-semibold ml-3"
         onPress={onPress}
-        onChangeText={(text) => console.log(text)}
-        value=""
+        onChangeText={onChangeText}
+        value={value}
+        autoFocus={autoFocus}
       />
     </View>
   );
