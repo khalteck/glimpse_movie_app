@@ -3,7 +3,7 @@ import React from "react";
 import { Tabs } from "expo-router";
 import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
-import TabIcon from "../components/TabIcon";
+import TabIcon from "../../components/TabIcon";
 
 const _layout = () => {
   return (
